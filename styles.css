@@ -1,21 +1,56 @@
-*{
+/* Reseteo general de márgenes, padding y box-sizing */
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-/* Estilos para el contenedor PDF responsivo */
-.info-container {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 150%; /* Altura mayor para pantallas pequeñas */
+/* Pantallas grandes (más de 1025px) */
+@media screen and (min-width: 1025px) {
+    .info-container {
+        position: relative;
+        width: 100%;
+        height: auto; /* Deja que la altura se ajuste según el contenido */
+        padding-bottom: 0; /* Ya no necesitas un padding en pantallas grandes */
+    }
+    .info-container img {
+        position: static; /* Evita el uso de absolute en pantallas grandes si no es necesario */
+        width: 100%;
+        height: auto; /* Permite que las imágenes mantengan su proporción */
+        border: none;
+    }
 }
-.info-container img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
+
+/* Pantallas medianas (480px a 1024px) */
+@media screen and (min-width: 480px) and (max-width: 1024px) {
+    .info-container {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding-bottom: 0;
+    }
+    .info-container img {
+        position: static;
+        width: 100%;
+        height: auto;
+        border: none;
+    }
+}
+
+/* Pantallas pequeñas (menos de 479px) */
+@media screen and (max-width: 479px) {
+    .info-container {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 150%; /* Mantiene la relación de aspecto */
+    }
+    .info-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
 }
